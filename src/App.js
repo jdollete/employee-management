@@ -1,8 +1,9 @@
 import React from 'react';
 import firebase from 'firebase';
-import { View, Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, View } from 'react-native';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import ReduxThunk from 'redux-thunk';
 import reducers from './reducers';
 import LoginForm from './components/LoginForm';
 import { Header } from './components/common';
@@ -28,9 +29,10 @@ class App extends React.Component {
 
   render() {
     const { viewStyle } = styles
+    const store = createStore(reducers, {}, applyMiddleware(ReduxThunk))
 
     return (
-      <Provider store={createStore(reducers)}>
+      <Provider store={store}>
         <View style={viewStyle}>
           <Header headerText="Login" />
           <LoginForm />
