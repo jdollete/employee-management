@@ -47,5 +47,5 @@ const loginUserSuccess = (dispatch, user) => {
     payload: user
   });
 
-  Actions.employeeList();
+  Actions.employeeList({ type: 'reset' });
 }
