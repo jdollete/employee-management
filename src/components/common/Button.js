@@ -13,7 +13,7 @@ const Button = ({ onPress, children }) => {
   );
 };
 
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   textStyle: {
     alignSelf: 'center',
     color: '#007aff',

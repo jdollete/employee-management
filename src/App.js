@@ -1,9 +1,11 @@
 import React from 'react';
 import firebase from 'firebase';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from './reducers';
+import LoginForm from './components/LoginForm';
+import { Header } from './components/common';
 
 class App extends React.Component {
 
@@ -25,16 +27,24 @@ class App extends React.Component {
   }
 
   render() {
+    const { viewStyle } = styles
+
     return (
       <Provider store={createStore(reducers)}>
-        <View>
-          <Text>
-            Hello
-          </Text>
+        <View style={viewStyle}>
+          <Header headerText="Login" />
+         <LoginForm />
         </View>
       </Provider>
     );
   }
 }
+
+const styles = StyleSheet.create ({
+  viewStyle: {
+    backgroundColor: '#0184FF',
+    flex: 1
+  }
+});
 
 export default App;
