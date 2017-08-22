@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { employeeUpdate } from '../actions';
-import { StyleSheet, Picker } from 'react-native';
+import { StyleSheet, Picker, Text } from 'react-native';
 import { Input, Button, Card, CardSection } from './common'
 
 class EmployeeCreate extends React.Component {
@@ -31,9 +31,9 @@ class EmployeeCreate extends React.Component {
         />
         </CardSection>
 
-        <CardSection>
+        <CardSection style={styles.cardPickerStyle}>
+          <Text style={styles.pickerTextStyle}>Select Shift</Text>
           <Picker
-            style={{ flex: 1 }}
             selectedValue={this.props.shift}
             onValueChange={value => this.props.employeeUpdate({ prop: 'shift', value })}
           >
@@ -58,6 +58,16 @@ class EmployeeCreate extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  pickerTextStyle: {
+    fontSize: 18,
+    paddingLeft: 20
+  },
+  cardPickerStyle: {
+    flexDirection: 'column'
+  }
+});
 
 const mapStateToProps = (state) => {
   const { name, phone, shift } = state.employeeForm;
