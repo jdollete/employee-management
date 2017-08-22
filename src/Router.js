@@ -6,7 +6,7 @@ import EmployeeCreate from './components/EmployeeCreate';
 
 const RouterComponent = () => {
   return (
-    <Router>
+    <Router sceneStyle={{backgroundColor:'#3498db'}}>
       <Scene key="root">
         <Scene
           key="login"

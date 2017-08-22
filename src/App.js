@@ -27,7 +27,6 @@ class App extends React.Component {
   }
 
   render() {
-    const { viewStyle } = styles
     const store = createStore(reducers, {}, applyMiddleware(ReduxThunk))
 
     return (
@@ -37,12 +36,5 @@ class App extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create ({
-  viewStyle: {
-    backgroundColor: '#0184FF',
-    flex: 1
-  }
-});
 
 export default App;
