@@ -1,5 +1,6 @@
 import React from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { Input, Button, Card, CardSection } from './common';
 
 class EmployeeCreate extends React.Component {
   constructor(props) {
@@ -8,9 +9,34 @@ class EmployeeCreate extends React.Component {
 
   render() {
     return (
-      <View>
-        <Text>Employee Form</Text>
-      </View>
+      <Card>
+
+        <CardSection>
+          <Input
+            label="Name"
+            placeHolder="Jane"
+          />
+        </CardSection>
+
+        <CardSection>
+        <Input
+          label="Phone"
+          placeHolder="555-555-5555"
+        />
+        </CardSection>
+
+        <CardSection>
+
+        </CardSection>
+
+        <CardSection>
+          <Button>
+            Create
+          </Button>
+        </CardSection>
+
+
+      </Card>
     );
   }
 }
