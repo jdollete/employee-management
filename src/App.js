@@ -22,7 +22,7 @@ class App extends React.Component {
       storageBucket: 'employee-manager-e77d1.appspot.com',
       messagingSenderId: '779442916990'
     }
-
+    
     firebase.initializeApp(config);
   }
 
