@@ -33,7 +33,7 @@ class App extends React.Component {
       <Provider store={createStore(reducers)}>
         <View style={viewStyle}>
           <Header headerText="Login" />
-         <LoginForm />
+          <LoginForm />
         </View>
       </Provider>
     );
