@@ -5,14 +5,17 @@ import { StyleSheet } from 'react-native';
 import Communications from 'react-native-communications';
 import EmployeeForm from './EmployeeForm';
 import { employeeUpdate, employeeSave } from '../actions';
-import { Card, CardSection, Button } from './common'
+import { Card, CardSection, Button, Confirm } from './common'
 
 class EmployeeEdit extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = { showModal: false };
+
     this.onButtonPress = this.onButtonPress.bind(this);
     this.onTextPress = this.onTextPress.bind(this);
+    this.displayModal = this.displayModal.bind(this);
   }
 
   componentWillMount() {
@@ -32,6 +35,10 @@ class EmployeeEdit extends React.Component {
       Communications.text(phone, `your upcoming shift is on  ${shift}`);
   }
 
+  displayModal() {
+    this.setState({ showModal: !this.state.showModal })
+  }
+
   render() {
     return (
       <Card>
@@ -47,10 +54,16 @@ class EmployeeEdit extends React.Component {
           </Button>
         </CardSection>
         <CardSection>
-          <Button onPress={this.onButtonPress}>
+          <Button onPress={this.displayModal}>
             Fire Employee
           </Button>
         </CardSection>
+
+        <Confirm
+          visible={this.state.showModal}
+        >
+          Are you sure you want to fire this person?
+        </Confirm>
       </Card>
     );
   }
