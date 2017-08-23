@@ -1,6 +1,6 @@
 import {
   EMPLOYEES_FETCH_SUCCESS,
-  EMPLOYEE_SAVE_SUCCESS
+  EMPLOYEE_SAVE_SUCCESS,
 } from '../actions/types';
 
 const INITIAL_STATE = {};
