@@ -48,7 +48,7 @@ class EmployeeEdit extends React.Component {
         </CardSection>
         <CardSection>
           <Button onPress={this.onButtonPress}>
-            Fire
+            Fire Employee
           </Button>
         </CardSection>
       </Card>
