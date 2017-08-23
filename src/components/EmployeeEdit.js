@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { StyleSheet } from 'react-native';
 import Communications from 'react-native-communications';
 import EmployeeForm from './EmployeeForm';
-import { employeeUpdate, employeeSave } from '../actions';
+import { employeeUpdate, employeeSave, employeeDelete } from '../actions';
 import { Card, CardSection, Button, Confirm } from './common'
 
 class EmployeeEdit extends React.Component {
@@ -16,6 +16,8 @@ class EmployeeEdit extends React.Component {
     this.onButtonPress = this.onButtonPress.bind(this);
     this.onTextPress = this.onTextPress.bind(this);
     this.displayModal = this.displayModal.bind(this);
+    this.onConfirm = this.onConfirm.bind(this);
+    this.onCancel = this.onCancel.bind(this);
   }
 
   componentWillMount() {
@@ -27,16 +29,24 @@ class EmployeeEdit extends React.Component {
   onButtonPress() {
     const { name, phone, shift } = this.props;
 
-    this.props.employeeSave({ name, phone, shift, uid: this.props.employee.uid })
+    this.props.employeeSave({ name, phone, shift, uid: this.props.employee.uid });
   }
 
   onTextPress() {
     const { phone, shift } = this.props;
-      Communications.text(phone, `your upcoming shift is on  ${shift}`);
+    Communications.text(phone, `your upcoming shift is on  ${shift}`);
   }
 
   displayModal() {
-    this.setState({ showModal: !this.state.showModal })
+    this.setState({ showModal: !this.state.showModal });
+  }
+
+  onConfirm() {
+    this.props.employeeDelete({ uid: this.props.employee.uid });
+  }
+
+  onCancel() {
+    this.setState({ showModal: false });
   }
 
   render() {
@@ -61,6 +71,8 @@ class EmployeeEdit extends React.Component {
 
         <Confirm
           visible={this.state.showModal}
+          onConfirm={this.onConfirm}
+          onCancel={this.onCancel}
         >
           Are you sure you want to fire this person?
         </Confirm>
@@ -77,5 +89,6 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
   employeeUpdate,
-  employeeSave
+  employeeSave,
+  employeeDelete
 })(EmployeeEdit);
